@@ -1,0 +1,743 @@
+[
+  {
+    "cca3": "USA",
+    "name": {
+      "common": "United States",
+      "official": "United States of America"
+    },
+    "capital": ["Washington, D.C."],
+    "region": "Americas",
+    "subregion": "North America",
+    "population": 334914895,
+    "area": 9372610.0,
+    "latlng": [38.0, -97.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"USD": {"name": "United States dollar", "symbol": "$"}},
+    "languages": {"eng": "English"},
+    "flags": {"alt": "The flag of the United States of America"}
+  },
+  {
+    "cca3": "CHN",
+    "name": {
+      "common": "China",
+      "official": "People's Republic of China"
+    },
+    "capital": ["Beijing"],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "population": 1411778724,
+    "area": 9706961.0,
+    "latlng": [35.0, 105.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"CNY": {"name": "Chinese yuan", "symbol": "¥"}},
+    "languages": {"zho": "Chinese"},
+    "flags": {"alt": "The flag of the People's Republic of China"}
+  },
+  {
+    "cca3": "IND",
+    "name": {
+      "common": "India",
+      "official": "Republic of India"
+    },
+    "capital": ["New Delhi"],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 1428627663,
+    "area": 3287263.0,
+    "latlng": [20.0, 77.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"INR": {"name": "Indian rupee", "symbol": "₹"}},
+    "languages": {"hin": "Hindi", "eng": "English"},
+    "flags": {"alt": "The flag of India"}
+  },
+  {
+    "cca3": "IDN",
+    "name": {
+      "common": "Indonesia",
+      "official": "Republic of Indonesia"
+    },
+    "capital": ["Jakarta"],
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "population": 277534122,
+    "area": 1904569.0,
+    "latlng": [-5.0, 120.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"IDR": {"name": "Indonesian rupiah", "symbol": "Rp"}},
+    "languages": {"ind": "Indonesian"},
+    "flags": {"alt": "The flag of Indonesia"}
+  },
+  {
+    "cca3": "PAK",
+    "name": {
+      "common": "Pakistan",
+      "official": "Islamic Republic of Pakistan"
+    },
+    "capital": ["Islamabad"],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 240485658,
+    "area": 881912.0,
+    "latlng": [30.0, 70.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"PKR": {"name": "Pakistani rupee", "symbol": "₨"}},
+    "languages": {"urd": "Urdu", "eng": "English"},
+    "flags": {"alt": "The flag of Pakistan"}
+  },
+  {
+    "cca3": "NGA",
+    "name": {
+      "common": "Nigeria",
+      "official": "Federal Republic of Nigeria"
+    },
+    "capital": ["Abuja"],
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "population": 223804632,
+    "area": 923768.0,
+    "latlng": [10.0, 8.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"NGN": {"name": "Nigerian naira", "symbol": "₦"}},
+    "languages": {"eng": "English"},
+    "flags": {"alt": "The flag of Nigeria"}
+  },
+  {
+    "cca3": "BRA",
+    "name": {
+      "common": "Brazil",
+      "official": "Federative Republic of Brazil"
+    },
+    "capital": ["Brasília"],
+    "region": "Americas",
+    "subregion": "South America",
+    "population": 216422446,
+    "area": 8515767.0,
+    "latlng": [-10.0, -55.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"BRL": {"name": "Brazilian real", "symbol": "R$"}},
+    "languages": {"por": "Portuguese"},
+    "flags": {"alt": "The flag of Brazil"}
+  },
+  {
+    "cca3": "BGD",
+    "name": {
+      "common": "Bangladesh",
+      "official": "People's Republic of Bangladesh"
+    },
+    "capital": ["Dhaka"],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 172954319,
+    "area": 147570.0,
+    "latlng": [24.0, 90.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"BDT": {"name": "Bangladeshi taka", "symbol": "৳"}},
+    "languages": {"ben": "Bengali"},
+    "flags": {"alt": "The flag of Bangladesh"}
+  },
+  {
+    "cca3": "RUS",
+    "name": {
+      "common": "Russia",
+      "official": "Russian Federation"
+    },
+    "capital": ["Moscow"],
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "population": 144444359,
+    "area": 17098242.0,
+    "latlng": [60.0, 100.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"RUB": {"name": "Russian ruble", "symbol": "₽"}},
+    "languages": {"rus": "Russian"},
+    "flags": {"alt": "The flag of Russia"}
+  },
+  {
+    "cca3": "MEX",
+    "name": {
+      "common": "Mexico",
+      "official": "United Mexican States"
+    },
+    "capital": ["Mexico City"],
+    "region": "Americas",
+    "subregion": "North America",
+    "population": 128455567,
+    "area": 1964375.0,
+    "latlng": [23.0, -102.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"MXN": {"name": "Mexican peso", "symbol": "$"}},
+    "languages": {"spa": "Spanish"},
+    "flags": {"alt": "The flag of Mexico"}
+  },
+  {
+    "cca3": "ETH",
+    "name": {
+      "common": "Ethiopia",
+      "official": "Federal Democratic Republic of Ethiopia"
+    },
+    "capital": ["Addis Ababa"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "population": 126527060,
+    "area": 1104300.0,
+    "latlng": [8.0, 38.0],
+    "landlocked": true,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"ETB": {"name": "Ethiopian birr", "symbol": "Br"}},
+    "languages": {"amh": "Amharic"},
+    "flags": {"alt": "The flag of Ethiopia"}
+  },
+  {
+    "cca3": "JPN",
+    "name": {
+      "common": "Japan",
+      "official": "Japan"
+    },
+    "capital": ["Tokyo"],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "population": 123294513,
+    "area": 377975.0,
+    "latlng": [36.0, 138.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"JPY": {"name": "Japanese yen", "symbol": "¥"}},
+    "languages": {"jpn": "Japanese"},
+    "flags": {"alt": "The flag of Japan"}
+  },
+  {
+    "cca3": "PHL",
+    "name": {
+      "common": "Philippines",
+      "official": "Republic of the Philippines"
+    },
+    "capital": ["Manila"],
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "population": 117337368,
+    "area": 300000.0,
+    "latlng": [13.0, 122.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"PHP": {"name": "Philippine peso", "symbol": "₱"}},
+    "languages": {"fil": "Filipino", "eng": "English"},
+    "flags": {"alt": "The flag of the Philippines"}
+  },
+  {
+    "cca3": "EGY",
+    "name": {
+      "common": "Egypt",
+      "official": "Arab Republic of Egypt"
+    },
+    "capital": ["Cairo"],
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "population": 112716598,
+    "area": 1002450.0,
+    "latlng": [27.0, 30.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"EGP": {"name": "Egyptian pound", "symbol": "E£"}},
+    "languages": {"ara": "Arabic"},
+    "flags": {"alt": "The flag of Egypt"}
+  },
+  {
+    "cca3": "COD",
+    "name": {
+      "common": "DR Congo",
+      "official": "Democratic Republic of the Congo"
+    },
+    "capital": ["Kinshasa"],
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "population": 102262808,
+    "area": 2344858.0,
+    "latlng": [0.0, 25.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"CDF": {"name": "Congolese franc", "symbol": "FC"}},
+    "languages": {"fra": "French", "lin": "Lingala"},
+    "flags": {"alt": "The flag of the Democratic Republic of the Congo"}
+  },
+  {
+    "cca3": "VNM",
+    "name": {
+      "common": "Vietnam",
+      "official": "Socialist Republic of Vietnam"
+    },
+    "capital": ["Hanoi"],
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "population": 98858915,
+    "area": 331212.0,
+    "latlng": [16.16666666, 107.83333333],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"VND": {"name": "Vietnamese đồng", "symbol": "₫"}},
+    "languages": {"vie": "Vietnamese"},
+    "flags": {"alt": "The flag of Vietnam"}
+  },
+  {
+    "cca3": "IRN",
+    "name": {
+      "common": "Iran",
+      "official": "Islamic Republic of Iran"
+    },
+    "capital": ["Tehran"],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "population": 89172767,
+    "area": 1648195.0,
+    "latlng": [32.0, 53.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"IRR": {"name": "Iranian rial", "symbol": "﷼"}},
+    "languages": {"fas": "Persian"},
+    "flags": {"alt": "The flag of Iran"}
+  },
+  {
+    "cca3": "TUR",
+    "name": {
+      "common": "Turkey",
+      "official": "Republic of Turkey"
+    },
+    "capital": ["Ankara"],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 85816199,
+    "area": 783562.0,
+    "latlng": [39.0, 35.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"TRY": {"name": "Turkish lira", "symbol": "₺"}},
+    "languages": {"tur": "Turkish"},
+    "flags": {"alt": "The flag of Turkey"}
+  },
+  {
+    "cca3": "DEU",
+    "name": {
+      "common": "Germany",
+      "official": "Federal Republic of Germany"
+    },
+    "capital": ["Berlin"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "population": 84482267,
+    "area": 357114.0,
+    "latlng": [51.0, 9.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"EUR": {"name": "Euro", "symbol": "€"}},
+    "languages": {"deu": "German"},
+    "flags": {"alt": "The flag of Germany"}
+  },
+  {
+    "cca3": "THA",
+    "name": {
+      "common": "Thailand",
+      "official": "Kingdom of Thailand"
+    },
+    "capital": ["Bangkok"],
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "population": 71801279,
+    "area": 513120.0,
+    "latlng": [15.0, 100.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"THB": {"name": "Thai baht", "symbol": "฿"}},
+    "languages": {"tha": "Thai"},
+    "flags": {"alt": "The flag of Thailand"}
+  },
+  {
+    "cca3": "GBR",
+    "name": {
+      "common": "United Kingdom",
+      "official": "United Kingdom of Great Britain and Northern Ireland"
+    },
+    "capital": ["London"],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "population": 67736802,
+    "area": 242900.0,
+    "latlng": [54.0, -2.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"GBP": {"name": "British pound", "symbol": "£"}},
+    "languages": {"eng": "English"},
+    "flags": {"alt": "The flag of the United Kingdom"}
+  },
+  {
+    "cca3": "FRA",
+    "name": {
+      "common": "France",
+      "official": "French Republic"
+    },
+    "capital": ["Paris"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "population": 68070697,
+    "area": 551695.0,
+    "latlng": [46.0, 2.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"EUR": {"name": "Euro", "symbol": "€"}},
+    "languages": {"fra": "French"},
+    "flags": {"alt": "The flag of France"}
+  },
+  {
+    "cca3": "ITA",
+    "name": {
+      "common": "Italy",
+      "official": "Italian Republic"
+    },
+    "capital": ["Rome"],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 58870762,
+    "area": 301336.0,
+    "latlng": [42.83333333, 12.83333333],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"EUR": {"name": "Euro", "symbol": "€"}},
+    "languages": {"ita": "Italian"},
+    "flags": {"alt": "The flag of Italy"}
+  },
+  {
+    "cca3": "ZAF",
+    "name": {
+      "common": "South Africa",
+      "official": "Republic of South Africa"
+    },
+    "capital": ["Pretoria"],
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "population": 60414495,
+    "area": 1221037.0,
+    "latlng": [-29.0, 24.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"ZAR": {"name": "South African rand", "symbol": "R"}},
+    "languages": {"afr": "Afrikaans", "eng": "English", "zul": "Zulu"},
+    "flags": {"alt": "The flag of South Africa"}
+  },
+  {
+    "cca3": "KEN",
+    "name": {
+      "common": "Kenya",
+      "official": "Republic of Kenya"
+    },
+    "capital": ["Nairobi"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "population": 55100586,
+    "area": 580367.0,
+    "latlng": [1.0, 38.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"KES": {"name": "Kenyan shilling", "symbol": "Sh"}},
+    "languages": {"eng": "English", "swa": "Swahili"},
+    "flags": {"alt": "The flag of Kenya"}
+  },
+  {
+    "cca3": "ESP",
+    "name": {
+      "common": "Spain",
+      "official": "Kingdom of Spain"
+    },
+    "capital": ["Madrid"],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "population": 47778340,
+    "area": 505992.0,
+    "latlng": [40.0, -4.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"EUR": {"name": "Euro", "symbol": "€"}},
+    "languages": {"spa": "Spanish"},
+    "flags": {"alt": "The flag of Spain"}
+  },
+  {
+    "cca3": "ARG",
+    "name": {
+      "common": "Argentina",
+      "official": "Argentine Republic"
+    },
+    "capital": ["Buenos Aires"],
+    "region": "Americas",
+    "subregion": "South America",
+    "population": 45773884,
+    "area": 2780400.0,
+    "latlng": [-34.0, -64.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"ARS": {"name": "Argentine peso", "symbol": "$"}},
+    "languages": {"spa": "Spanish"},
+    "flags": {"alt": "The flag of Argentina"}
+  },
+  {
+    "cca3": "CAN",
+    "name": {
+      "common": "Canada",
+      "official": "Canada"
+    },
+    "capital": ["Ottawa"],
+    "region": "Americas",
+    "subregion": "North America",
+    "population": 38929902,
+    "area": 9984670.0,
+    "latlng": [60.0, -95.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"CAD": {"name": "Canadian dollar", "symbol": "$"}},
+    "languages": {"eng": "English", "fra": "French"},
+    "flags": {"alt": "The flag of Canada"}
+  },
+  {
+    "cca3": "POL",
+    "name": {
+      "common": "Poland",
+      "official": "Republic of Poland"
+    },
+    "capital": ["Warsaw"],
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "population": 37691000,
+    "area": 312696.0,
+    "latlng": [52.0, 20.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"PLN": {"name": "Polish złoty", "symbol": "zł"}},
+    "languages": {"pol": "Polish"},
+    "flags": {"alt": "The flag of Poland"}
+  },
+  {
+    "cca3": "MAR",
+    "name": {
+      "common": "Morocco",
+      "official": "Kingdom of Morocco"
+    },
+    "capital": ["Rabat"],
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "population": 37840000,
+    "area": 446550.0,
+    "latlng": [32.0, -5.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"MAD": {"name": "Moroccan dirham", "symbol": "د.م."}},
+    "languages": {"ara": "Arabic", "ber": "Berber"},
+    "flags": {"alt": "The flag of Morocco"}
+  },
+  {
+    "cca3": "SAU",
+    "name": {
+      "common": "Saudi Arabia",
+      "official": "Kingdom of Saudi Arabia"
+    },
+    "capital": ["Riyadh"],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "population": 36947025,
+    "area": 2149690.0,
+    "latlng": [25.0, 45.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"SAR": {"name": "Saudi riyal", "symbol": "ر.س"}},
+    "languages": {"ara": "Arabic"},
+    "flags": {"alt": "The flag of Saudi Arabia"}
+  },
+  {
+    "cca3": "AUS",
+    "name": {
+      "common": "Australia",
+      "official": "Commonwealth of Australia"
+    },
+    "capital": ["Canberra"],
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "population": 26439111,
+    "area": 7692024.0,
+    "latlng": [-27.0, 133.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"AUD": {"name": "Australian dollar", "symbol": "$"}},
+    "languages": {"eng": "English"},
+    "flags": {"alt": "The flag of Australia"}
+  },
+  {
+    "cca3": "KOR",
+    "name": {
+      "common": "South Korea",
+      "official": "Republic of Korea"
+    },
+    "capital": ["Seoul"],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "population": 51784059,
+    "area": 100210.0,
+    "latlng": [37.0, 127.5],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"KRW": {"name": "South Korean won", "symbol": "₩"}},
+    "languages": {"kor": "Korean"},
+    "flags": {"alt": "The flag of South Korea"}
+  },
+  {
+    "cca3": "COL",
+    "name": {
+      "common": "Colombia",
+      "official": "Republic of Colombia"
+    },
+    "capital": ["Bogotá"],
+    "region": "Americas",
+    "subregion": "South America",
+    "population": 52085168,
+    "area": 1141748.0,
+    "latlng": [4.0, -72.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"COP": {"name": "Colombian peso", "symbol": "$"}},
+    "languages": {"spa": "Spanish"},
+    "flags": {"alt": "The flag of Colombia"}
+  },
+  {
+    "cca3": "NZL",
+    "name": {
+      "common": "New Zealand",
+      "official": "New Zealand"
+    },
+    "capital": ["Wellington"],
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "population": 5124100,
+    "area": 270467.0,
+    "latlng": [-41.0, 174.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"NZD": {"name": "New Zealand dollar", "symbol": "$"}},
+    "languages": {"eng": "English", "mri": "Māori"},
+    "flags": {"alt": "The flag of New Zealand"}
+  },
+  {
+    "cca3": "FJI",
+    "name": {
+      "common": "Fiji",
+      "official": "Republic of Fiji"
+    },
+    "capital": ["Suva"],
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "population": 929766,
+    "area": 18272.0,
+    "latlng": [-18.0, 175.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"FJD": {"name": "Fijian dollar", "symbol": "$"}},
+    "languages": {"eng": "English", "fij": "Fijian", "hif": "Fiji Hindi"},
+    "flags": {"alt": "The flag of Fiji"}
+  },
+  {
+    "cca3": "CHE",
+    "name": {
+      "common": "Switzerland",
+      "official": "Swiss Confederation"
+    },
+    "capital": ["Bern"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "population": 8775760,
+    "area": 41284.0,
+    "latlng": [47.0, 8.0],
+    "landlocked": true,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"CHF": {"name": "Swiss franc", "symbol": "CHF"}},
+    "languages": {"deu": "German", "fra": "French", "ita": "Italian", "roh": "Romansh"},
+    "flags": {"alt": "The flag of Switzerland"}
+  },
+  {
+    "cca3": "NOR",
+    "name": {
+      "common": "Norway",
+      "official": "Kingdom of Norway"
+    },
+    "capital": ["Oslo"],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "population": 5474360,
+    "area": 323802.0,
+    "latlng": [62.0, 10.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"NOK": {"name": "Norwegian krone", "symbol": "kr"}},
+    "languages": {"nor": "Norwegian"},
+    "flags": {"alt": "The flag of Norway"}
+  },
+  {
+    "cca3": "USA",
+    "name": {
+      "common": "United States (Duplicate Record to test Deduplication)",
+      "official": "United States of America"
+    },
+    "capital": ["Washington, D.C."],
+    "region": "Americas",
+    "subregion": "North America",
+    "population": 334914895,
+    "area": 9372610.0,
+    "latlng": [38.0, -97.0],
+    "landlocked": false,
+    "unMember": true,
+    "independent": true,
+    "currencies": {"USD": {"name": "United States dollar", "symbol": "$"}},
+    "languages": {"eng": "English"},
+    "flags": {"alt": "The flag of the United States"}
+  }
+]

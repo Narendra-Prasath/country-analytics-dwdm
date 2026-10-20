@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Analytics Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bs-body-bg: #f8fafc;
+            --bs-body-color: #1e293b;
+        }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+        .chart-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        .badge-soft-primary { background-color: #e0e7ff; color: #3730a3; }
+        .badge-soft-success { background-color: #dcfce7; color: #166534; }
+        .badge-soft-info { background-color: #e0f2fe; color: #0369a1; }
+        .table-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .table th {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="fa-solid fa-earth-americas text-primary"></i>
+                <span>Country Analytics <span class="badge bg-primary fs-7">Live DWDM</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-secondary small d-none d-md-inline">
+                    <i class="fa-solid fa-database me-1"></i> SQLite Relational Warehouse
+                </span>
+                <button class="btn btn-outline-light btn-sm" id="btn-run-etl" onclick="triggerEtl()">
+                    <i class="fa-solid fa-arrows-rotate me-1" id="etl-spinner"></i> Re-run ETL Pipeline
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid px-4 py-4">
+
+        <!-- Notification Banner -->
+        <div id="etl-alert" class="alert alert-dismissible fade show d-none mb-4" role="alert">
+            <span id="etl-alert-msg"></span>
+            <button type="button" class="btn-close" onclick="document.getElementById('etl-alert').classList.add('d-none')"></button>
+        </div>
+
+        <!-- KPI Metric Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3 border-start border-4 border-primary">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small fw-medium">TOTAL COUNTRIES</div>
+                            <div class="fs-3 fw-bold text-dark mt-1">{{ summary.kpis.total_countries }}</div>
+                            <div class="text-muted small mt-1">Validated & Normalized</div>
+                        </div>
+                        <div class="bg-primary-subtle p-3 rounded-circle text-primary">
+                            <i class="fa-solid fa-flag fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3 border-start border-4 border-success">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small fw-medium">TOTAL POPULATION</div>
+                            <div class="fs-3 fw-bold text-dark mt-1">{{ "{:,}".format(summary.kpis.total_population) }}</div>
+                            <div class="text-muted small mt-1">Across represented countries</div>
+                        </div>
+                        <div class="bg-success-subtle p-3 rounded-circle text-success">
+                            <i class="fa-solid fa-users fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3 border-start border-4 border-info">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small fw-medium">TOTAL LAND AREA</div>
+                            <div class="fs-3 fw-bold text-dark mt-1">{{ "{:,.0f}".format(summary.kpis.total_area_km2) }} <span class="fs-6 fw-normal text-muted">km²</span></div>
+                            <div class="text-muted small mt-1">Global surface coverage</div>
+                        </div>
+                        <div class="bg-info-subtle p-3 rounded-circle text-info">
+                            <i class="fa-solid fa-chart-area fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card stat-card p-3 border-start border-4 border-warning">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small fw-medium">ETL STATUS</div>
+                            <div class="fs-4 fw-bold text-success mt-1">
+                                <i class="fa-solid fa-circle-check me-1"></i> {{ summary.latest_run.status if summary.latest_run else "SUCCESS" }}
+                            </div>
+                            <div class="text-muted small mt-1">
+                                Run ID #{{ summary.latest_run.run_id if summary.latest_run else 1 }} • {{ summary.latest_run.duplicates_detected if summary.latest_run else 0 }} dupes removed
+                            </div>
+                        </div>
+                        <div class="bg-warning-subtle p-3 rounded-circle text-warning">
+                            <i class="fa-solid fa-network-wired fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row 1 -->
+        <div class="row g-4 mb-4">
+            <!-- Population by Region -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0"><i class="fa-solid fa-pie-chart text-primary me-2"></i>Population by Region</h6>
+                        <span class="badge badge-soft-primary">Aggregated Fact</span>
+                    </div>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="chart-population-region"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countries by Region -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0"><i class="fa-solid fa-chart-column text-success me-2"></i>Number of Countries by Region</h6>
+                        <span class="badge badge-soft-success">Dimensional Count</span>
+                    </div>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="chart-countries-region"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row 2 -->
+        <div class="row g-4 mb-4">
+            <!-- Top 10 Countries by Population -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0"><i class="fa-solid fa-ranking-star text-danger me-2"></i>Top 10 Countries by Population</h6>
+                        <span class="badge badge-soft-primary">Top 10 Metric</span>
+                    </div>
+                    <div style="position: relative; height: 320px;">
+                        <canvas id="chart-top10-pop"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 10 Countries by Land Area -->
+            <div class="col-lg-6">
+                <div class="card chart-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0"><i class="fa-solid fa-map-location-dot text-info me-2"></i>Top 10 Countries by Land Area (km²)</h6>
+                        <span class="badge badge-soft-info">Top 10 Metric</span>
+                    </div>
+                    <div style="position: relative; height: 320px;">
+                        <canvas id="chart-top10-area"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filterable & Searchable Country Table -->
+        <div class="card table-card mb-4">
+            <div class="card-header bg-white py-3 border-0">
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-4">
+                        <h6 class="fw-bold mb-0"><i class="fa-solid fa-table-list text-primary me-2"></i>Country Master Directory</h6>
+                        <small class="text-muted">Searchable, filterable view from relational warehouse</small>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                            <input type="text" id="table-search" class="form-control border-start-0 bg-light" placeholder="Search country, capital, or code..." onkeyup="filterTable()">
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-md-end gap-2">
+                        <select id="region-filter" class="form-select form-select-sm w-auto" onchange="filterTable()">
+                            <option value="all">All Regions</option>
+                            {% for reg in regions %}
+                            <option value="{{ reg }}">{{ reg }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="badge bg-secondary align-self-center py-2 px-3" id="table-row-count">{{ countries|length }} countries</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="countries-table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Code</th>
+                            <th>Country Name</th>
+                            <th>Capital</th>
+                            <th>Region</th>
+                            <th>Subregion</th>
+                            <th class="text-end">Population</th>
+                            <th class="text-end">Area (km²)</th>
+                            <th class="text-end">Density (/km²)</th>
+                            <th>Currencies</th>
+                            <th>Languages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in countries %}
+                        <tr data-region="{{ c.region }}" data-search="{{ c.common_name }} {{ c.cca3 }} {{ c.capital or '' }} {{ c.subregion or '' }}">
+                            <td><span class="badge bg-dark fw-mono">{{ c.cca3 }}</span></td>
+                            <td class="fw-semibold">
+                                {{ c.common_name }}
+                                {% if c.landlocked %}<span class="badge bg-light text-muted border ms-1" title="Landlocked country">Landlocked</span>{% endif %}
+                            </td>
+                            <td>{{ c.capital or '-' }}</td>
+                            <td><span class="badge badge-soft-primary">{{ c.region }}</span></td>
+                            <td class="text-muted small">{{ c.subregion or '-' }}</td>
+                            <td class="text-end fw-bold">{{ "{:,}".format(c.population) }}</td>
+                            <td class="text-end">{{ "{:,.0f}".format(c.area_km2) if c.area_km2 else '-' }}</td>
+                            <td class="text-end text-muted small">{{ c.population_density if c.population_density else '-' }}</td>
+                            <td class="small">{{ c.currencies_display }}</td>
+                            <td class="small text-muted">{{ c.languages_display }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Charts & Interaction -->
+    <script>
+        const summaryData = {{ summary | tojson }};
+
+        // 1. Population by Region (Doughnut Chart)
+        const popRegionCtx = document.getElementById('chart-population-region').getContext('2d');
+        const popRegionLabels = summaryData.population_by_region.map(r => r.region);
+        const popRegionValues = summaryData.population_by_region.map(r => r.total_population);
+        new Chart(popRegionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: popRegionLabels,
+                datasets: [{
+                    data: popRegionValues,
+                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                return ` ${ctx.label}: ${ctx.raw.toLocaleString()} people`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. Countries by Region (Bar Chart)
+        const countryRegionCtx = document.getElementById('chart-countries-region').getContext('2d');
+        const countRegionLabels = summaryData.countries_by_region.map(r => r.region);
+        const countRegionValues = summaryData.countries_by_region.map(r => r.country_count);
+        new Chart(countryRegionCtx, {
+            type: 'bar',
+            data: {
+                labels: countRegionLabels,
+                datasets: [{
+                    label: 'Number of Countries',
+                    data: countRegionValues,
+                    backgroundColor: '#10b981',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { precision: 0 } }
+                }
+            }
+        });
+
+        // 3. Top 10 by Population (Horizontal Bar Chart)
+        const top10PopCtx = document.getElementById('chart-top10-pop').getContext('2d');
+        const top10PopLabels = summaryData.top10_population.map(c => c.common_name);
+        const top10PopValues = summaryData.top10_population.map(c => c.population);
+        new Chart(top10PopCtx, {
+            type: 'bar',
+            data: {
+                labels: top10PopLabels,
+                datasets: [{
+                    label: 'Population',
+                    data: top10PopValues,
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                return ` Population: ${ctx.raw.toLocaleString()}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(val) {
+                                return (val / 1000000).toFixed(0) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 4. Top 10 by Area (Bar Chart)
+        const top10AreaCtx = document.getElementById('chart-top10-area').getContext('2d');
+        const top10AreaLabels = summaryData.top10_area.map(c => c.common_name);
+        const top10AreaValues = summaryData.top10_area.map(c => c.area_km2);
+        new Chart(top10AreaCtx, {
+            type: 'bar',
+            data: {
+                labels: top10AreaLabels,
+                datasets: [{
+                    label: 'Land Area (km²)',
+                    data: top10AreaValues,
+                    backgroundColor: '#06b6d4',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                return ` Area: ${ctx.raw.toLocaleString()} km²`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(val) {
+                                return (val / 1000000).toFixed(1) + 'M km²';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Table Filtering & Search
+        function filterTable() {
+            const searchVal = document.getElementById('table-search').value.toLowerCase().trim();
+            const regionVal = document.getElementById('region-filter').value.toLowerCase();
+            const rows = document.querySelectorAll('#countries-table tbody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const rowRegion = (row.getAttribute('data-region') || '').toLowerCase();
+                const rowSearch = (row.getAttribute('data-search') || '').toLowerCase();
+
+                const matchesRegion = (regionVal === 'all' || rowRegion === regionVal);
+                const matchesSearch = (!searchVal || rowSearch.includes(searchVal));
+
+                if (matchesRegion && matchesSearch) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            document.getElementById('table-row-count').innerText = `${visibleCount} countries`;
+        }
+
+        // Live Re-run ETL Function
+        async function triggerEtl() {
+            const btn = document.getElementById('btn-run-etl');
+            const spinner = document.getElementById('etl-spinner');
+            const alertBox = document.getElementById('etl-alert');
+            const alertMsg = document.getElementById('etl-alert-msg');
+
+            btn.disabled = true;
+            spinner.classList.add('fa-spin');
+
+            try {
+                const resp = await fetch('/api/run-etl', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                const data = await resp.json();
+                if (data.success) {
+                    alertBox.className = 'alert alert-success alert-dismissible fade show mb-4';
+                    alertMsg.innerHTML = `<strong>ETL Success!</strong> Loaded ${data.result.rows_loaded} countries in ${data.result.elapsed_seconds}s (Run #${data.result.run_id}). Refreshing page...`;
+                    alertBox.classList.remove('d-none');
+                    setTimeout(() => window.location.reload(), 1500);
+                } else {
+                    alertBox.className = 'alert alert-danger alert-dismissible fade show mb-4';
+                    alertMsg.innerHTML = `<strong>ETL Failed:</strong> ${data.error}`;
+                    alertBox.classList.remove('d-none');
+                }
+            } catch (err) {
+                alertBox.className = 'alert alert-danger alert-dismissible fade show mb-4';
+                alertMsg.innerHTML = `<strong>Network Error:</strong> ${err.message}`;
+                alertBox.classList.remove('d-none');
+            } finally {
+                btn.disabled = false;
+                spinner.classList.remove('fa-spin');
+            }
+        }
+    </script>
+</body>
+</html>
